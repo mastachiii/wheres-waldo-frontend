@@ -1,6 +1,7 @@
 import { useState } from "react";
 import CharacterSelection from "./characterSel";
-import beach from "../assets/scenes/at-the-beach.png";
+import beach from "../assets/scenes/hollywood.jpg";
+import Marker from "./marker";
 
 export default function Game() {
     const [pos, setPos] = useState({});
@@ -14,9 +15,10 @@ export default function Game() {
     }); // Position === X, Y
 
     function handleClick(e) {
+        console.log(e.pageX);
         setPos({
-            x: e.clientX,
-            y: e.clientY,
+            x: e.pageX,
+            y: e.pageY,
         });
         setShowCharSel(!showCharSel);
     }
@@ -32,6 +34,11 @@ export default function Game() {
 
     return (
         <div>
+            <Marker color="red" coordinates={charPositions.waldo} />
+            <Marker color="pink" coordinates={charPositions.wenda} />
+            <Marker color="white" coordinates={charPositions.woof} />
+            <Marker color="yellow" coordinates={charPositions.odlaw} />
+            <Marker color="purple" coordinates={charPositions.wizard} />
             <CharacterSelection
                 x={pos.x}
                 y={pos.y}
@@ -39,7 +46,7 @@ export default function Game() {
                 activeHandler={() => setShowCharSel(!showCharSel)}
                 charHandler={handleCharacterSel}
             />
-            <img src={beach} alt="" onClick={handleClick} />
+            <img src={beach} style={{ width: "1920px", height: "1080px" }} alt="" onClick={handleClick} />
         </div>
     );
 }
