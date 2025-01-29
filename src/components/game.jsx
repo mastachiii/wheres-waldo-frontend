@@ -5,25 +5,40 @@ import beach from "../assets/scenes/at-the-beach.png";
 export default function Game() {
     const [pos, setPos] = useState({});
     const [showCharSel, setShowCharSel] = useState(false);
-    const [charLocations, setCharLocations] = useState({
+    const [charPositions, setCharPositions] = useState({
         waldo: "",
         wenda: "",
-        odlaw: "",
         woof: "",
-    });
+        odlaw: "",
+        wizard: "",
+    }); // Position === X, Y
 
     function handleClick(e) {
         setPos({
             x: e.clientX,
             y: e.clientY,
         });
+        setShowCharSel(!showCharSel);
+    }
 
-        setShowCharSel(!showCharSel)
+    function handleCharacterSel({ name, pos }) {
+        setCharPositions({
+            ...charPositions,
+            [name]: pos,
+        });
+
+        console.log(charPositions);
     }
 
     return (
         <div>
-            <CharacterSelection x={pos.x} y={pos.y} active={showCharSel} activeHandler={() => setShowCharSel(!showCharSel)}/>
+            <CharacterSelection
+                x={pos.x}
+                y={pos.y}
+                active={showCharSel}
+                activeHandler={() => setShowCharSel(!showCharSel)}
+                charHandler={handleCharacterSel}
+            />
             <img src={beach} alt="" onClick={handleClick} />
         </div>
     );
