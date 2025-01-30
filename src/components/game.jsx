@@ -1,6 +1,6 @@
 import { useState } from "react";
 import CharacterSelection from "./characterSel";
-import beach from "../assets/scenes/hollywood.jpg";
+import beach from "../assets/scenes/space.jpg";
 import Marker from "./marker";
 
 export default function Game() {
@@ -15,7 +15,7 @@ export default function Game() {
     }); // Position === X, Y
 
     function handleClick(e) {
-        console.log(e.pageX);
+        console.log(e.pageX, e.pageY);
         setPos({
             x: e.pageX,
             y: e.pageY,
