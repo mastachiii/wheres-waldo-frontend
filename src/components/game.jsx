@@ -28,6 +28,7 @@ export default function Game() {
     }, [id]);
 
     function handleClick(e) {
+        console.log(charLocations);
         setPos({
             x: e.pageX,
             y: e.pageY,
@@ -37,8 +38,8 @@ export default function Game() {
     }
 
     function handleCharacterSel({ name, pos }) {
-        verifyAnswer({ ans: { name, pos }, key: charLocations.current[name] });
-        
+        if (!verifyAnswer({ ans: { name, pos }, key: charLocations.current[name] })) return;
+
         setCharPositions({
             ...charPositions,
             [name]: pos,

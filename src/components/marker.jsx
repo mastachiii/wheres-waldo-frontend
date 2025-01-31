@@ -4,13 +4,13 @@ export default function Marker({ color, coordinates }) {
     return (
         <div
             style={{
-                width: "1rem",
-                height: "1rem",
+                width: ".5rem",
+                height: ".5rem",
                 display: coordinates ? "block" : "none",
                 backgroundColor: color,
                 position: "absolute",
-                left: `${x - 10}px`,
-                top: `${y - 10}px`,
+                left: `${x}px`,
+                top: `${y}px`,
             }}
         ></div>
     );
