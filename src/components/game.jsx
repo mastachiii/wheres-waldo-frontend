@@ -5,25 +5,23 @@ import beach from "../assets/scenes/space.jpg";
 import Marker from "./marker";
 import levelApi from "../helpers/levelApi";
 import verifyAnswer from "../helpers/verifyAnswer";
+import { showLevelCharacters } from "../helpers/transformLevelData";
 
 export default function Game() {
     const { id } = useParams();
     const [pos, setPos] = useState({});
     const [levelData, setLevelData] = useState({});
+    const [gameStatus, setGameStatus] = useState("loading");
     const [showCharSel, setShowCharSel] = useState(false);
-    const [charPositions, setCharPositions] = useState({
-        waldo: "",
-        wenda: "",
-        woof: "",
-        odlaw: "",
-        wizard: "",
-    }); // Position === X, Y
+    const [charPositions, setCharPositions] = useState({}); // { NAME: "X, Y"}
 
     useEffect(() => {
         (async () => {
             const level = await levelApi.getLevel(id);
 
+            setCharPositions(showLevelCharacters({ levelData: level, mapToEmptyStrings: true }));
             setLevelData(level);
+            setGameStatus("ingame");
         })();
     }, [id]);
 
@@ -44,23 +42,24 @@ export default function Game() {
             [name]: pos,
         });
     }
-
-    return (
-        <div>
-            <Marker color="red" coordinates={charPositions.waldo} />
-            <Marker color="pink" coordinates={charPositions.wenda} />
-            <Marker color="white" coordinates={charPositions.woof} />
-            <Marker color="yellow" coordinates={charPositions.odlaw} />
-            <Marker color="purple" coordinates={charPositions.wizard} />
-            <CharacterSelection
-                x={pos.x}
-                y={pos.y}
-                active={showCharSel}
-                activeHandler={() => setShowCharSel(!showCharSel)}
-                charHandler={handleCharacterSel}
-                levelData={levelData}
-            />
-            <img src={beach} style={{ width: "1920px", height: "1080px" }} alt="" onClick={handleClick} />
-        </div>
-    );
+    if (gameStatus === "ingame") {
+        return (
+            <div>
+                <Marker color="red" coordinates={charPositions.waldo} />
+                <Marker color="pink" coordinates={charPositions.wenda} />
+                <Marker color="white" coordinates={charPositions.woof} />
+                <Marker color="yellow" coordinates={charPositions.odlaw} />
+                <Marker color="purple" coordinates={charPositions.wizard} />
+                <CharacterSelection
+                    x={pos.x}
+                    y={pos.y}
+                    active={showCharSel}
+                    activeHandler={() => setShowCharSel(!showCharSel)}
+                    charHandler={handleCharacterSel}
+                    levelData={levelData}
+                />
+                <img src={beach} style={{ width: "1920px", height: "1080px" }} alt="" onClick={handleClick} />
+            </div>
+        );
+    }
 }

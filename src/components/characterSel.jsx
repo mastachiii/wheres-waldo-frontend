@@ -1,10 +1,8 @@
 import PropTypes, { bool, number } from "prop-types";
+import { showLevelCharacters } from "../helpers/transformLevelData";
 
 export default function CharacterSelection({ x, y, active, activeHandler, charHandler, levelData }) {
-    console.log(x);
-    const charsToShow = Object.keys(levelData).filter(
-        k => k !== "name" && k !== "sceneName" && k !== "id" && k !== "attempts" && levelData[k] !== null
-    ); // Theres probably a better way..
+    const charsToShow = showLevelCharacters({ levelData, mapToEmptyStrings: false });
 
     function handleClick(e) {
         const name = e.target.textContent.toLowerCase();
