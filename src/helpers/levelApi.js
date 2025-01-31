@@ -1,21 +1,22 @@
 class Level {
     constructor() {
-        this.url = "http:localhost:8080";
-    }
-
-    async getRequestOptions({ method = "GET", headers, body }) {
-        return {
-            method,
-            headers,
-            body: JSON.stringify(body),
-        };
+        this.url = "http://localhost:8080/levels";
     }
 
     async getAllLevels() {
-        const level = fetch(this.url, this.getRequestOptions())
+        const levels = await fetch(this.url)
             .then(response => response.json())
             .then(data => data);
 
+        return levels;
+    }
+
+    async getLevel() {
+        const level = await fetch(this.url)
+            .then(response => response.json())
+            .then(data => data.levels);
+
+        console.log(level);
         return level;
     }
 }

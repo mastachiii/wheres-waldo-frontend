@@ -1,9 +1,13 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { useParams } from "react-router";
 import CharacterSelection from "./characterSel";
 import beach from "../assets/scenes/space.jpg";
 import Marker from "./marker";
+import levelApi from "../helpers/levelApi";
 
 export default function Game() {
+    const charLocations = useRef({}); // Rather use a ref instead since this wont change.
+    const { id } = useParams();
     const [pos, setPos] = useState({});
     const [showCharSel, setShowCharSel] = useState(false);
     const [charPositions, setCharPositions] = useState({
@@ -14,8 +18,17 @@ export default function Game() {
         wizard: "",
     }); // Position === X, Y
 
+    useEffect(() => {
+        (async () => {
+            const level = await levelApi.getLevel(id);
+
+            console.log(level);
+
+            charLocations.current = level;
+        })();
+    }, [id]);
+
     function handleClick(e) {
-        console.log(e.pageX, e.pageY);
         setPos({
             x: e.pageX,
             y: e.pageY,
@@ -28,8 +41,6 @@ export default function Game() {
             ...charPositions,
             [name]: pos,
         });
-
-        console.log(charPositions);
     }
 
     return (
