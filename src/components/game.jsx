@@ -37,17 +37,21 @@ export default function Game() {
     function handleCharacterSel({ name, pos }) {
         if (!verifyAnswer({ ans: { name, pos }, key: levelData[name] })) return;
 
-        setCharPositions({
-            ...charPositions,
-            [name]: pos,
-        });
+        const updatedPos = { ...charPositions, [name]: pos };
+        const isWin = Object.values(updatedPos).filter(v => v === "").length === 0;
+
+        if (isWin) {
+            location.reload();
+        } else {
+            setCharPositions(updatedPos);
+        }
     }
 
     if (gameStatus === "ingame") {
         return (
             <div>
                 {Object.keys(charPositions).map(c => {
-                    return <Marker name={c} coordinates={charPositions[c]} key={c}/>;
+                    return <Marker name={c} coordinates={charPositions[c]} key={c} />;
                 })}
                 <CharacterSelection
                     x={pos.x}

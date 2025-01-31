@@ -11,7 +11,7 @@ const colors = {
 
 export default function Marker({ name, coordinates }) {
     const [x, y] = coordinates.split(",");
-    console.log(coordinates)
+
     return (
         <div
             style={{
@@ -28,6 +28,6 @@ export default function Marker({ name, coordinates }) {
 }
 
 Marker.propTypes = {
-    color: PropTypes.string,
+    name: PropTypes.string,
     coordinates: PropTypes.string,
 };
