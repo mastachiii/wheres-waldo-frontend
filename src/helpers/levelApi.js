@@ -11,12 +11,11 @@ class Level {
         return levels;
     }
 
-    async getLevel() {
-        const level = await fetch(this.url)
+    async getLevel(id) {
+        const level = await fetch(`${this.url}/${id}`)
             .then(response => response.json())
-            .then(data => data.levels);
+            .then(data => data.level);
 
-        console.log(level);
         return level;
     }
 }

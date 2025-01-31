@@ -1,10 +1,11 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import Game from "./components/game";
-import "./index.css"
+import { RouterProvider } from "react-router";
+import router from "./routes/routes";
+import "./index.css";
 
 createRoot(document.getElementById("root")).render(
     <StrictMode>
-      <Game />
+        <RouterProvider router={router} />
     </StrictMode>
 );

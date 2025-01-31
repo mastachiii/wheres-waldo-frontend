@@ -4,6 +4,7 @@ import CharacterSelection from "./characterSel";
 import beach from "../assets/scenes/space.jpg";
 import Marker from "./marker";
 import levelApi from "../helpers/levelApi";
+import verifyAnswer from "../helpers/verifyAnswer";
 
 export default function Game() {
     const charLocations = useRef({}); // Rather use a ref instead since this wont change.
@@ -22,8 +23,6 @@ export default function Game() {
         (async () => {
             const level = await levelApi.getLevel(id);
 
-            console.log(level);
-
             charLocations.current = level;
         })();
     }, [id]);
@@ -33,10 +32,13 @@ export default function Game() {
             x: e.pageX,
             y: e.pageY,
         });
+
         setShowCharSel(!showCharSel);
     }
 
     function handleCharacterSel({ name, pos }) {
+        verifyAnswer({ ans: { name, pos }, key: charLocations.current[name] });
+        
         setCharPositions({
             ...charPositions,
             [name]: pos,
