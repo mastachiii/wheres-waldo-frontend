@@ -7,9 +7,9 @@ import levelApi from "../helpers/levelApi";
 import verifyAnswer from "../helpers/verifyAnswer";
 
 export default function Game() {
-    const charLocations = useRef({}); // Rather use a ref instead since this wont change.
     const { id } = useParams();
     const [pos, setPos] = useState({});
+    const [levelData, setLevelData] = useState({});
     const [showCharSel, setShowCharSel] = useState(false);
     const [charPositions, setCharPositions] = useState({
         waldo: "",
@@ -23,12 +23,11 @@ export default function Game() {
         (async () => {
             const level = await levelApi.getLevel(id);
 
-            charLocations.current = level;
+            setLevelData(level);
         })();
     }, [id]);
 
     function handleClick(e) {
-        console.log(charLocations);
         setPos({
             x: e.pageX,
             y: e.pageY,
@@ -38,7 +37,7 @@ export default function Game() {
     }
 
     function handleCharacterSel({ name, pos }) {
-        if (!verifyAnswer({ ans: { name, pos }, key: charLocations.current[name] })) return;
+        if (!verifyAnswer({ ans: { name, pos }, key: levelData[name] })) return;
 
         setCharPositions({
             ...charPositions,
@@ -59,6 +58,7 @@ export default function Game() {
                 active={showCharSel}
                 activeHandler={() => setShowCharSel(!showCharSel)}
                 charHandler={handleCharacterSel}
+                levelData={levelData}
             />
             <img src={beach} style={{ width: "1920px", height: "1080px" }} alt="" onClick={handleClick} />
         </div>
