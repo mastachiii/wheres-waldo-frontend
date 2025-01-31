@@ -42,14 +42,13 @@ export default function Game() {
             [name]: pos,
         });
     }
+
     if (gameStatus === "ingame") {
         return (
             <div>
-                <Marker color="red" coordinates={charPositions.waldo} />
-                <Marker color="pink" coordinates={charPositions.wenda} />
-                <Marker color="white" coordinates={charPositions.woof} />
-                <Marker color="yellow" coordinates={charPositions.odlaw} />
-                <Marker color="purple" coordinates={charPositions.wizard} />
+                {Object.keys(charPositions).map(c => {
+                    return <Marker name={c} coordinates={charPositions[c]} key={c}/>;
+                })}
                 <CharacterSelection
                     x={pos.x}
                     y={pos.y}

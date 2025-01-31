@@ -1,15 +1,24 @@
 import PropTypes from "prop-types";
 
-export default function Marker({ color, coordinates }) {
-    const [x, y] = coordinates.split(",");
+const colors = {
+    waldo: "red",
+    wenda: "pink",
+    wilma: "pink",
+    woof: "white",
+    odlaw: "yellow",
+    wizard: "purple",
+};
 
+export default function Marker({ name, coordinates }) {
+    const [x, y] = coordinates.split(",");
+    console.log(coordinates)
     return (
         <div
             style={{
                 width: ".5rem",
                 height: ".5rem",
                 display: coordinates ? "block" : "none",
-                backgroundColor: color,
+                backgroundColor: colors[name],
                 position: "absolute",
                 left: `${x}px`,
                 top: `${y}px`,
