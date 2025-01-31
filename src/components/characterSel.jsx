@@ -1,4 +1,7 @@
+import PropTypes, { bool, number } from "prop-types";
+
 export default function CharacterSelection({ x, y, active, activeHandler, charHandler, levelData }) {
+    console.log(x);
     const charsToShow = Object.keys(levelData).filter(
         k => k !== "name" && k !== "sceneName" && k !== "id" && k !== "attempts" && levelData[k] !== null
     ); // Theres probably a better way..
@@ -19,3 +22,12 @@ export default function CharacterSelection({ x, y, active, activeHandler, charHa
         </div>
     );
 }
+
+CharacterSelection.propTypes = {
+    x: PropTypes.oneOfType([bool, number]),
+    y: PropTypes.oneOfType([bool, number]),
+    active: PropTypes.bool,
+    activeHandler: PropTypes.func,
+    charHandler: PropTypes.func,
+    levelData: PropTypes.object,
+};

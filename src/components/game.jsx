@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import CharacterSelection from "./characterSel";
 import beach from "../assets/scenes/space.jpg";

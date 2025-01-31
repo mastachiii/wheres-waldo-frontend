@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 export default function Marker({ color, coordinates }) {
     const [x, y] = coordinates.split(",");
 
@@ -15,3 +17,8 @@ export default function Marker({ color, coordinates }) {
         ></div>
     );
 }
+
+Marker.propTypes = {
+    color: PropTypes.string,
+    coordinates: PropTypes.string,
+};
