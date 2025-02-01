@@ -1,10 +1,10 @@
 import { useEffect, useState, useRef } from "react";
 import { useParams } from "react-router";
 import CharacterSelection from "./characterSel";
-import beach from "../assets/scenes/space.jpg";
 import Marker from "./marker";
 import levelApi from "../helpers/levelApi";
 import verifyAnswer from "../helpers/verifyAnswer";
+import images from "../helpers/levelImages";
 import { showLevelCharacters } from "../helpers/transformLevelData";
 
 export default function Game() {
@@ -68,7 +68,7 @@ export default function Game() {
                     charHandler={handleCharacterSel}
                     levelData={levelData}
                 />
-                <img src={beach} style={{ width: "1920px", height: "1080px" }} alt="" onClick={handleClick} />
+                <img src={images[levelData.name]} style={{ width: "1920px", height: "1080px" }} alt="" onClick={handleClick} />
             </div>
         );
     }
