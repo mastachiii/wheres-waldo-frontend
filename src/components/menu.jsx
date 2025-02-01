@@ -15,8 +15,7 @@ export default function Menu() {
 
     return (
         <div>
-            <h4>Where's Waldo?</h4>
-            
+            <h4>Where's Waldo?</h4>            
             <ol>
                 {levels.map(l => {
                     return (
