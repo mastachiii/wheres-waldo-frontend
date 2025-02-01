@@ -14,9 +14,17 @@ class Level {
     async getLevel(id) {
         const level = await fetch(`${this.url}/${id}`)
             .then(response => response.json())
-            .then(data => data.level);
+            .then(data => data);
 
         return level;
+    }
+
+    async submitLevelAttempt({ id, name, timeStarted }) {
+        await fetch(`${this.url}/${id}`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ name, timeStarted }),
+        });
     }
 }
 
