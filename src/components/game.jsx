@@ -4,9 +4,10 @@ import CharacterSelection from "./characterSel";
 import Marker from "./marker";
 import levelApi from "../helpers/levelApi";
 import verifyAnswer from "../helpers/verifyAnswer";
-import images from "../helpers/levelImages";
+import { sceneImages } from "../helpers/levelImages";
 import { showLevelCharacters } from "../helpers/transformLevelData";
 import Result from "./gameResult";
+import { charImages } from "../helpers/levelImages";
 
 export default function Game() {
     const { id } = useParams();
@@ -73,7 +74,7 @@ export default function Game() {
                         charHandler={handleCharacterSel}
                         levelData={levelData}
                     />
-                    <img src={images[levelData.name]} style={{ width: "1920px", height: "1080px" }} alt="" onClick={handleClick} />
+                    <img src={sceneImages[levelData.name]} style={{ width: "1920px", height: "1080px" }} alt="" onClick={handleClick} />
                 </div>
             );
         }
