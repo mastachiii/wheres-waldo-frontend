@@ -1,1 +1,15 @@
 @import "tailwindcss";
+
+@theme {
+    --animate-popUp: popUp 1s ease-in-out 1;
+
+    @keyframes popUp {
+        from {
+            opacity: 0;
+        }
+
+        to {
+            opacity: 1;
+        }
+    }
+}

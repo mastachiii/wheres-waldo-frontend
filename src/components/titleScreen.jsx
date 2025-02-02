@@ -13,7 +13,7 @@ export default function TitleScreen() {
     }
 
     return (
-        <div>
+        <div className="font-mono animate-popUp">
             <img src={logo} alt="wheres waldo logo" className="w-md  ml-auto mr-auto" />
             <div className="flex flex-col items-center">
                 <input
@@ -21,7 +21,7 @@ export default function TitleScreen() {
                     value={username}
                     onChange={e => setUsername(e.target.value)}
                     placeholder={"Enter your name..."}
-                    className="border-1 rounded-xl p-3 w-[15%] border-stone-300"
+                    className="border-[1px] rounded-full p-3 w-[15%] border-slate-400 text-sm "
                 />
                 <button
                     onClick={handleClick}
