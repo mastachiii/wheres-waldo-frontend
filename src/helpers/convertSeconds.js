@@ -6,5 +6,5 @@ export default function convertSeconds(sec) {
 
     if (seconds.length === 1) seconds = "0" + seconds;
 
-    console.log(`${minutes}:${seconds}`);
+    return `${minutes}:${seconds}`;
 }

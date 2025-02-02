@@ -28,7 +28,7 @@ export default function CharacterSelection({ x, y, active, activeHandler, charHa
             className="flex-col justify-center items-center p-3 overflow-hidden"
         >
             <button onClick={() => handleCylce("sub")}>
-                <img src={miscImages.prev} className="w-[1.5rem]" />
+                <img src={miscImages.prev} className="w-[1.5rem] cursor-pointer" />
             </button>
             {charsToShow.map((c, index) => {
                 return (
@@ -38,7 +38,7 @@ export default function CharacterSelection({ x, y, active, activeHandler, charHa
                 );
             })}
             <button onClick={() => handleCylce("add")}>
-                <img src={miscImages.next} className="w-[1.5rem]" />
+                <img src={miscImages.next} className="w-[1.5rem] cursor-pointer" />
             </button>
         </div>
     );
