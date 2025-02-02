@@ -13,3 +13,9 @@
         }
     }
 }
+
+@layer base {
+    img {
+        max-width: initial;
+    }
+}

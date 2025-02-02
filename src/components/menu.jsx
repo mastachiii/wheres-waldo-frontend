@@ -33,12 +33,12 @@ export default function Menu() {
                                 key={l.id}
                                 onMouseEnter={() => setSelected(l.id)}
                                 onMouseLeave={() => setSelected(null)}
-                                className={`w-[25%] h-[40%] p-5 pb-10 rounded-lg text-[10px] shadow-lg  bg-stone-100
+                                className={`w-[30%] h-[20%] p-5 pb-10 rounded-lg text-[10px] shadow-lg  bg-stone-100
                                  transition duration-100 ease-in hover:bg-amber-300 hover:scale-110 *: hover:opacity-100 ${
                                      selected === l.id && "h-[50%] border-2  border-stone-600"
                                  }`}
                             >
-                                <img src={sceneImages[l.name]} alt="level image" className="mb-2" />
+                                <img src={sceneImages[l.name]} alt="level image" className="mb-2 w-[100%]" />
                                 <Link to={`/levels/${l.id}`} className={`font-mono italic hover:text-blue-700 ${selected === l.id && "text-[15px]"}`}>
                                     {l.sceneName}
                                 </Link>
