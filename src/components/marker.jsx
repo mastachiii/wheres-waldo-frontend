@@ -10,7 +10,6 @@ const colors = {
 };
 
 export default function Marker({ name, coordinates }) {
-    console.log({ name, coordinates });
     const [x, y] = coordinates.split(", ");
 
     return (

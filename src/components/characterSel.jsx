@@ -5,8 +5,7 @@ import { charImages } from "../helpers/levelImages";
 export default function CharacterSelection({ x, y, active, activeHandler, charHandler, levelData }) {
     const charsToShow = showLevelCharacters({ levelData, mapToEmptyStrings: false });
 
-    function handleClick(e) {
-        const name = e.target.textContent.toLowerCase();
+    function handleClick(name) {
         const pos = `${x}, ${y}`;
 
         activeHandler();
@@ -16,12 +15,12 @@ export default function CharacterSelection({ x, y, active, activeHandler, charHa
     return (
         <div
             style={{ display: active ? "flex" : "none", position: "absolute", top: `${y}px`, left: `${x - 20}px` }}
-            onClick={handleClick}
-            className=" flex-col justify-center p-3 overflow-hidden"
+            onClick={() => activeHandler()}
+            className="flex-col justify-center p-3 overflow-hidden"
         >
             {charsToShow.map(c => {
                 return (
-                    <button key={c}>
+                    <button key={c} onClick={() => handleClick(c)} value={c}>
                         <img
                             src={charImages[c]}
                             className="w-[3rem] h-[3rem] rounded-full transition duration-75 ease-in cursor-pointer hover:scale-120"
