@@ -12,7 +12,7 @@ export default function Result({ timeFinished, attempts }) {
                     return <p key={a.id}>{`${a.playerName} - ${a.timeFinished}`}</p>;
                 })}
             </ul>
-            <Link to={"/"}>Back to menu</Link>
+            <Link to={"/levels"}>Back to menu</Link>
         </dialog>
     );
 }

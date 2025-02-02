@@ -1,20 +1,35 @@
 import { useState } from "react";
-import { redirect } from "react-router";
+import { redirect, useNavigate } from "react-router";
+import logo from "../assets/logo.svg";
 
 export default function TitleScreen() {
     const [username, setUsername] = useState("");
+    const navigate = useNavigate();
 
     function handleClick() {
         localStorage.setItem("username", username);
 
-        redirect("/levels");
+        navigate("/levels");
     }
 
     return (
         <div>
-            <h1>Where's Waldo</h1>
-            <input type="text" value={username} onChange={e => setUsername(e.target.value)} />
-            <button onClick={handleClick}>PLAY</button>
+            <img src={logo} alt="wheres waldo logo" className="w-md  ml-auto mr-auto" />
+            <div className="flex flex-col items-center">
+                <input
+                    type="text"
+                    value={username}
+                    onChange={e => setUsername(e.target.value)}
+                    placeholder={"Enter your name..."}
+                    className="border-1 rounded-xl p-3 w-[15%] border-stone-300"
+                />
+                <button
+                    onClick={handleClick}
+                    className="mt-8 p-5 pt-3 pb-3 font-semibold rounded-full cursor-pointer text-white  bg-lime-500 transition duration-150 ease-in hover:bg-lime-600 "
+                >
+                    PLAY
+                </button>
+            </div>
         </div>
     );
 }
