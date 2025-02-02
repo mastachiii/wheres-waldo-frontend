@@ -7,6 +7,8 @@ import wilma from "../assets/charIcons/wilma.png";
 import woof from "../assets/charIcons/woof.png";
 import odlaw from "../assets/charIcons/odlaw.png";
 import wizard from "../assets/charIcons/wizard.png";
+import prev from "../assets/prev.svg";
+import next from "../assets/next.svg"
 
 const sceneImages = {
     fruit,
@@ -22,4 +24,9 @@ const charImages = {
     odlaw,
 };
 
-export { charImages, sceneImages };
+const miscImages = {
+    prev,
+    next
+}
+
+export { charImages, sceneImages, miscImages };
