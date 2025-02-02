@@ -13,7 +13,7 @@ export default function TitleScreen() {
     }
 
     return (
-        <div className="font-mono animate-popUp">
+        <div className="font-sans animate-popUp">
             <img src={logo} alt="wheres waldo logo" className="w-md  ml-auto mr-auto" />
             <div className="flex flex-col items-center">
                 <input
