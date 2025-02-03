@@ -1,10 +1,12 @@
 class Level {
     constructor() {
-        this.url = "http://localhost:8080/levels";
+        this.url = "https://wheres-waldo-backend-1cdf.onrender.com/levels";
     }
 
     async getAllLevels() {
-        const levels = await fetch(this.url)
+        const levels = await fetch(this.url, {
+            "Access-Control-Allow-Origin": "*",
+        })
             .then(response => response.json())
             .then(data => data);
 
