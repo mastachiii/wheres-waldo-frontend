@@ -7,7 +7,6 @@ import verifyAnswer from "../helpers/verifyAnswer";
 import { sceneImages } from "../helpers/levelImages";
 import { showLevelCharacters } from "../helpers/transformLevelData";
 import Result from "./gameResult";
-import { charImages } from "../helpers/levelImages";
 import Loading from "./loading";
 
 export default function Game() {
@@ -49,14 +48,7 @@ export default function Game() {
         const isWin = Object.values(updatedPos).filter(v => v === "").length === 0;
 
         if (isWin) {
-            const name = localStorage.getItem("username") || "Anonymous";
-            const { timeFinished } = await levelApi.submitLevelAttempt({ id, name, timeStarted: timestamp.current });
-            const { level } = await levelApi.getLevel(id); // Fetch level data again incase the leaderboards have changed..
-
-            timestamp.current = timeFinished;
-
             setGameStatus("win");
-            setLevelData(level);
         } else {
             setCharPositions(updatedPos);
         }
@@ -83,7 +75,7 @@ export default function Game() {
         }
 
         case "win": {
-            return <Result timeFinished={timestamp.current} attempts={levelData.attempts} />;
+            return <Result timestamp={timestamp.current} id={id} />;
         }
 
         default: {

@@ -2,7 +2,6 @@
 // Answer doesn't have to be 1:1, giving some leeway (about 10px?) should be fine.
 
 export default function verifyAnswer({ ans, key }) {
-    console.log({ ans, key })
     const [ansX, ansY] = ans.pos.split(",");
     const [keyX, keyY] = key.split(",");
     const xThreshold = 10;

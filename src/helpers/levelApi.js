@@ -4,9 +4,7 @@ class Level {
     }
 
     async getAllLevels() {
-        const levels = await fetch(this.url, {
-            "Access-Control-Allow-Origin": "*",
-        })
+        const levels = await fetch(this.url)
             .then(response => response.json())
             .then(data => data);
 
