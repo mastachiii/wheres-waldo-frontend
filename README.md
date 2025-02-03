@@ -1,8 +1,10 @@
-# React + Vite
+# Wheres Waldo (Front-end)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+My interpretation of the popular [Where's Waldo?](https://en.wikipedia.org/wiki/Where%27s_Wally%3F) game
 
-Currently, two official plugins are available:
+## Built with
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+* React
+* Tailwind CSS
+* Vite
+ 
